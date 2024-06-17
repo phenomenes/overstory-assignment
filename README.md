@@ -31,7 +31,7 @@ curl -X POST "http://0.0.0.0:5000/inference" -F "file=@./data/test-1.tif" --outp
 Validate the response
 
 ```shell
-python3 -c "import numpy;print(type(numpy.load('output.npy')))"
+python3 -c "import numpy; print(isinstance(numpy.load('output.npy'), numpy.ndarray))"
 ```
 
 ## Deploying to Kubernetes (minikube)
@@ -108,7 +108,7 @@ To handle increased traffic and ensure high availability, we should consider mak
 
 * Multi Availability Zone cluster: Deploy the Kubernetes cluster in multiple availability zones to increase the availability.
 
-* GPUs: Utilize GPUs for running for running the prediction/inference to improve the performance.
+* GPUs: Utilize GPUs for running the prediction/inference to improve the performance.
 
 #### Infrastructure as Code (IaC)
 
