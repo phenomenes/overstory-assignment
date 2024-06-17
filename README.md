@@ -7,16 +7,25 @@
 * Kubernetes >= 1.29
 * minikube >= 1.33
 * helm >= 3.15
+* gdal == 3.9.0
+
+Please note that due to the limited time these instructions assume you are working on Darwin OS.
 
 ## Running the service locally
 
-Install dependencies
+Check out the repo:
+
+```shell
+git clone github.com/phenomenes/overstory-assignment
+```
+
+Install dependencies:
 
 ```shell
 pip install -r requirements.txt
 ```
 
-Start the flask app
+Start the flask app:
 
 ```shell
 python app.py
@@ -25,10 +34,10 @@ python app.py
 The service listens on port 5000 by default, you can use `curl` to get an inference:
 
 ```shell
-curl -X POST "http://0.0.0.0:5000/inference" -F "file=@./data/test-1.tif" --output 'output.npy'
+curl "http://127.0.0.1:8888/inference" -F "file=@./data/test-1.tif" --output 'output.npy'
 ```
 
-Validate the response
+Validate the response:
 
 ```shell
 python3 -c "import numpy; print(isinstance(numpy.load('output.npy'), numpy.ndarray))"
@@ -38,17 +47,24 @@ python3 -c "import numpy; print(isinstance(numpy.load('output.npy'), numpy.ndarr
 
 Please note that minikube requires at least 3GB of memory.
 
-Start minikube
+Start minikube:
 
 ```shell
 make minikube
 ```
 
-Deploy the helm chart
+Set the minikube environment:
+
+```shell
+eval $(minikube docker-env --profile overstory)
+```
+
+Deploy the helm chart:
 
 ```shell
 make deploy
 ```
+
 This target will install a helm chart that will create a `Deployment`, and a Service of type `LoadBalancer`.
 
 To be able to access the service we need to start a tunnel on a separate terminal
@@ -72,9 +88,9 @@ Take note of `$IPADDR` and `$PORT`
 Now we can curl the web app using the above address and port and verify the result as above
 
 ```shell
-curl -X POST "http://127.0.0.1:8888/inference" -F "file=@./data/test-1.tif" --output 'output.npy'
+curl "http://127.0.0.1:8888/inference" -F "file=@./data/test-1.tif" --output 'output.npy'
 
-python3 -c "import numpy;print(type(numpy.load('output.npy')))"
+python3 -c "import numpy; print(isinstance(numpy.load('output.npy'), numpy.ndarray))"
 ```
 
 ## Design considerations

@@ -40,7 +40,6 @@ minikube: delete-minikube
 delete-minikube:
 	-minikube delete --profile overstory
 
-# FIXME once we publish the image we don't need to build it in the step anymore
 deploy: build-image delete-chart install-chart
 
 clean-up: delete-minikube delete-image
