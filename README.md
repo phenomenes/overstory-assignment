@@ -1,4 +1,4 @@
-# Overstory assignmnent
+# Overstory assignment
 
 ## Requirements
 
@@ -102,9 +102,9 @@ To handle increased traffic and ensure high availability, we should consider mak
 
 * nginx: Introduce nginx as a reverse proxy to handle incoming requests and provide features such as load balancing, caching, and SSL termination
 
-* Horizontal Pod Autoscaler (HPA): Dinamically adjust the number of running pods based on CPU and memory usage to handle varying traffic loads.  By scaling up during peak times and scaling down during low traffic periods, HPA helps in maintaining optimal resource utilization and cost efficiency.
+* Horizontal Pod Autoscaler (HPA): Dynamically adjust the number of running pods based on CPU and memory usage to handle varying traffic loads.  By scaling up during peak times and scaling down during low traffic periods, HPA helps in maintaining optimal resource utilization and cost efficiency.
 
-* Cluster Autoscaler, Node Auto-Provisioner(NAP) or Karpenter: Automatically adjust the size of the Kubernetes cluster based on resource utilization, adding or removing nodes as necessary.
+* Cluster Autoscaler, Node Auto-Provisioner (NAP) or Karpenter: Automatically adjust the size of the Kubernetes cluster based on resource utilization, adding or removing nodes as necessary.
 
 * Multi Availability Zone cluster: Deploy the Kubernetes cluster in multiple availability zones to increase the availability.
 
