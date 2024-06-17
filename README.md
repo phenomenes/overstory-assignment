@@ -85,10 +85,6 @@ Some changes were made to the original code for better performance and readabili
 * The U-Net library was moved to its own file for better readability and maintainability.
 * Flask was used for simplicity and ease of development.
 * Used minikube with minimum requirements. Since I'm constrained to the local environment, I had to create a tunnel to access the service.
-* The current Docker image is quite large (~3GB) due to the inclusion of GDAL. Explore alternatives to reduce image size when moving to production:
-    * Pre-compile GDAL and copy the necessary .so files into the image.
-    * Use a repository to store and retrieve pre-compiled GDAL binary
-_(FIXME: these are assumptions, verify docker image)_
 
 ### Running on production
 

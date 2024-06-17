@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     && pip install -r requirements.txt \
     && groupadd -r appuser && useradd -r -g appuser appuser
 
-COPY . .
+COPY app.py requirements.txt model.py utils.py .
 
 RUN chown -R appuser:appuser /app
 USER appuser
