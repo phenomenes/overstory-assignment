@@ -13,12 +13,6 @@ Please note that due to the limited time these instructions assume you are worki
 
 ## Running the service locally
 
-Check out the repo:
-
-```shell
-git clone github.com/phenomenes/overstory-assignment
-```
-
 Install dependencies:
 
 ```shell
