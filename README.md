@@ -112,32 +112,37 @@ To handle increased traffic and ensure high availability, we should consider mak
 
 #### Infrastructure as Code (IaC)
 
-To maintain reproducibility and have multiple collaborators working on the same architecture, we should consider building the proposed architecture with Terraform and keep changes on a github repo to allow multiple collaborators making changes simultaneously.
+To ensure reproducibility and facilitate collaboration among multiple team members, it's essential to build the proposed architecture using Infrastructure as Code (IaC) tools like Terraform. By defining infrastructure in code, we can version control the infrastructure setup, making it easier to manage and track changes over time.
 
-#### CI/CD Setup
+#### CI/CD Pipeline
 
-Establish a CI/CD pipeline to run tests and ensure code quality on every commit:
+Establish a CI pipeline to maintain code quality and ensure reliability of both the source code and infrastructure by running tests:
 
-* Unit Testing
-    * Mock the web app and test each endpoint.
-    * Test utility functions.
+* Unit Testing:
+    * Mocking the web app and test each endpoint.
+    * Unit testing the utility functions.
+
 * Linting
     * Lint Helm charts to ensure they follow best practices
     * pylint
+
 * Template Testing
-    * Generate and test Kubernetes templates to verify deployment configurations.
+    * Generate Kubernetes templates to verify deployment configurations.
+
 * Integration tests
+
+Automated deployments (CD) triggered by events, such as a version change in code, can be efficiently managed using a GitOps approach
 
 #### Monitoring and Metrics
 
-Instrument the web app, and model library to collect essential metrics and establish baselines:
+Proper instrumentation of the web app, and model library are essential for collecting metrics and establishing baselines and ensuring efficient use of resources. This will allow proactive monitoring, quick identification of degradation of service, and capacity planning.
 
-* HTTP Request time: measure the time taken to process requests.
-* CPU and Memory Usage: Monitor resource consumption to ensure efficient usage.
+Key metrics to monitor:
 
-- properly instrument the web app and model
-    metrics we should get baselines:
-    - HTTP request time
-    - CPU
-    - memory
-
+* HTTP Request time
+* Error rates
+* Throughput
+* CPU and Memory Usage
+* Prediction latency
+* Input data size, and output result size
+* Prediction accuracy
