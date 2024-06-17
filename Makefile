@@ -1,22 +1,22 @@
 NAME        = overstory-service
 IMAGE       = overstory-service
-TAG         ?= test
+TAG         ?= latest
 K8S_VERSION = "1.29"
 MINIKUBE_MB = 3092
 
 build-image: delete-image
 	docker build \
 		--rm \
-		-t ghrc.io/phenomenes/$(IMAGE):$(TAG) .
+		-t ghcr.io/phenomenes/$(IMAGE):$(TAG) .
 
 push-image:
-	docker push ghrc.io/phenomenes/$(IMAGE):$(TAG)
+	docker push ghcr.io/phenomenes/$(IMAGE):$(TAG)
 
 delete-image:
-	-docker rmi -f ghrc.io/phenomenes/$(IMAGE)/$(TAG) >/dev/null 2>&1
+	-docker rmi -f ghcr.io/phenomenes/$(IMAGE)/$(TAG) >/dev/null 2>&1
 
 run-image:
-	docker run --rm -it -p 8888:8888 ghrc.io/phenomenes/$(IMAGE):$(TAG)
+	docker run --rm -it -p 8888:8888 ghcr.io/phenomenes/$(IMAGE):$(TAG)
 
 build-chart: lint-chart
 	helm package helm/
